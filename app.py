@@ -1,6 +1,8 @@
 import streamlit as st
 from openai import OpenAI
 
+openai_api_key = st.secrets['OPENAI_API_KEY']
+
 # Initialize variables
 system_message = """
 You are a customer service AI assistant. Your goal is to help users with their inquiries and detect if they need to be escalated to a human representative. Pay attention to signs of frustration, repeated requests for human assistance, or complex issues that may require human intervention.
@@ -35,8 +37,6 @@ with st.sidebar:
     "When identifying any of these scenarios, the chat should stop and trigger an ESCALATION."
     ""
     "Please hit the Reset Conversation button to restart after an ESCALATION."
-    
-    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
 
     # Model selection dropdown
     model_option = st.selectbox(
